@@ -11,7 +11,7 @@ func (h Hero) attack(e *Enemy) {
 	var weapon string
 	fmt.Println("Choose your weapon")
 	fmt.Scanln(&weapon)
-	modifier := h.weapons[weapon].damage
+	modifier := h.weapons[weapon]
 	damage := rand.Intn(h.damage) + (1 + modifier)
 	if !e.dead {
 		e.health -= damage
@@ -22,23 +22,18 @@ func (h Hero) attack(e *Enemy) {
 	fmt.Printf("%s did %d points of damage, the %s has %d points of health left\n", h.name, damage, e.class, e.health)
 }
 
-func addItem[I Weapon | Potion | Armor](i I) I {
+func addItem[I Weapon | Equipment](i I) I {
 	return i
 }
 func (h *Hero) getWeapon(w Weapon) {
 	weapon := addItem(w)
-	h.weapons[weapon.name] = w
+	h.weapons[weapon.name] = weapon.damage
 	fmt.Println(h.weapons)
 }
-func (h *Hero) getArmor(a Armor) {
-	item := addItem(a)
-	h.armor[item.name] = a
-	fmt.Println(h.armor)
-}
-func (h *Hero) getPotion(p Potion) {
-	item := addItem(p)
-	h.potions[item.name] = p
-	fmt.Println(h.potions)
+func (h *Hero) getItem(s Equipment) {
+	item := addItem(s)
+	h.supplies[item.name] = item.amount
+	fmt.Println(h.supplies)
 }
 
 func (h Hero) castSpell(e *Enemy) {
@@ -101,9 +96,8 @@ func spawnPlayer() (Hero, *Hero) {
 		hP.agility = 7
 		hP.damage = 4
 		hP.health = 30
-		hP.weapons = map[string]Weapon{}
-		hP.potions = map[string]Potion{}
-		hP.armor = map[string]Armor{}
+		hP.weapons = map[string]int{"musket": 6}
+		hP.supplies = map[string]int{}
 		hP.slowed = false
 		hP.weakened = false
 		hP.imbued = false
@@ -114,8 +108,8 @@ func spawnPlayer() (Hero, *Hero) {
 		hP.agility = 8
 		hP.damage = 6
 		hP.health = 4
-		// hP.weapons["musket"] = Weapon{name: "musket", damage: 6}
-		hP.potions = map[string]Potion{}
+		hP.weapons = map[string]int{"dagger": 4}
+		hP.supplies = map[string]int{}
 		hP.slowed = false
 		hP.weakened = false
 		hP.imbued = false
@@ -126,8 +120,8 @@ func spawnPlayer() (Hero, *Hero) {
 		hP.agility = 10
 		hP.damage = 8
 		hP.health = 10
-		hP.weapons["musket"] = Weapon{name: "musket", damage: 6}
-		hP.potions = map[string]Potion{}
+		hP.weapons = map[string]int{"axe": 8}
+		hP.supplies = map[string]int{}
 		hP.slowed = false
 		hP.weakened = false
 		hP.imbued = false

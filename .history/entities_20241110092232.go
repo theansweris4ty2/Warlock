@@ -7,9 +7,8 @@ type Hero struct {
 	agility  int
 	health   int
 	damage   int
-	weapons  map[string]Weapon
-	armor    map[string]Armor
-	potions  map[string]Potion
+	weapons  map[string]int
+	supplies map[string]int
 	slowed   bool
 	weakened bool
 	imbued   bool

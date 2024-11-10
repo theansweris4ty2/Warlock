@@ -7,6 +7,8 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
+var sword = Weapon{name: "sword", damage: 5}
+
 func main() {
 	heroes := make(map[string]Hero)
 	villains := make(map[string]Enemy)

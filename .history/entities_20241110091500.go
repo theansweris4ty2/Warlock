@@ -1,19 +1,18 @@
 package main
 
 type Hero struct {
-	name     string
-	class    string
-	strength int
-	agility  int
-	health   int
-	damage   int
-	weapons  map[string]Weapon
-	armor    map[string]Armor
-	potions  map[string]Potion
-	slowed   bool
-	weakened bool
-	imbued   bool
-	dead     bool
+	name      string
+	class     string
+	strength  int
+	agility   int
+	health    int
+	damage    int
+	weapons   map[string]Weapon
+	inventory map[string]int
+	slowed    bool
+	weakened  bool
+	imbued    bool
+	dead      bool
 	// x        float32
 	// y        float32
 	// height   float32

@@ -7,6 +7,8 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
+var sword = Weapon{name: "sword", damage: 5}
+
 func main() {
 	heroes := make(map[string]Hero)
 	villains := make(map[string]Enemy)
@@ -17,9 +19,6 @@ func main() {
 	heroes[p1.name] = player1
 	heroes[p2.name] = player2
 	villains[e1.class] = enemy1
-	p1.getWeapon(Weapon{name: "musket", damage: 6})
-	p1.getPotion(Potion{name: "Healing", condition: "heal 6"})
-	p1.getArmor(Armor{name: "leather", defense: 2})
 	for len(heroes) > 0 && len(villains) > 0 {
 		for _, p := range heroes {
 			p.turn(e1)
@@ -35,6 +34,8 @@ func main() {
 		}
 	}
 
+	p1.getWeapon(sword)
+	p1.getItem(rope)
 }
 
 func startGame() {

@@ -33,12 +33,11 @@ func (h *Hero) getWeapon(w Weapon) {
 func (h *Hero) getArmor(a Armor) {
 	item := addItem(a)
 	h.armor[item.name] = a
-	fmt.Println(h.armor)
+	fmt.Println(h.potions)
 }
 func (h *Hero) getPotion(p Potion) {
 	item := addItem(p)
 	h.potions[item.name] = p
-	fmt.Println(h.potions)
 }
 
 func (h Hero) castSpell(e *Enemy) {

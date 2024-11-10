@@ -30,14 +30,9 @@ func (h *Hero) getWeapon(w Weapon) {
 	h.weapons[weapon.name] = w
 	fmt.Println(h.weapons)
 }
-func (h *Hero) getArmor(a Armor) {
-	item := addItem(a)
-	h.armor[item.name] = a
-	fmt.Println(h.armor)
-}
-func (h *Hero) getPotion(p Potion) {
+func (h *Hero) getItem(p Potion) {
 	item := addItem(p)
-	h.potions[item.name] = p
+	h.potions[item.name] = item
 	fmt.Println(h.potions)
 }
 
@@ -103,7 +98,6 @@ func spawnPlayer() (Hero, *Hero) {
 		hP.health = 30
 		hP.weapons = map[string]Weapon{}
 		hP.potions = map[string]Potion{}
-		hP.armor = map[string]Armor{}
 		hP.slowed = false
 		hP.weakened = false
 		hP.imbued = false

@@ -1,9 +1,8 @@
 package main
 
 type Spell struct {
-	name      string
-	damage    int
-	condition string
+	name   string
+	damage int
 }
 
 const (
@@ -11,3 +10,4 @@ const (
 	LIGHTNING
 	FROST
 )
+[x]
